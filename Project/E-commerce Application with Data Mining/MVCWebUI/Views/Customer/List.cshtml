@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Ecommerce.Entities.Customer>
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Customer List</h1>
+
+<p align="right">
+    @Html.ActionLink("Add New Customer", "Add")
+</p>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Surname </th>
+        <th>Type</th>
+        <th>County</th>     
+        <th>Email</th>
+        <th>Password</th>
+        <th>Gender</th>
+        <th>BirthDate</th>
+        <th>Contract</th>
+        <th>Activation Code</th>
+        <th>Address</th>
+        <th>Date</th>
+        <th>Active </th>
+        <th>Deleted</th>
+        <th>Operations</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer_Surname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerTypeOfCustomer.TypeOfCustomer_Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CustomerCounty.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer_Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer_Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer_Gender)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer_BirthDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer_Contract)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActivationCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Customer_Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AddDate)
+        </td>
+        <td>
+            <input type="checkbox" checked=@item.IsActive />
+        </td>
+        <td>
+            <input type="checkbox" checked=@item.IsDelete />
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Customer_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Customer_Id })
+        </td>
+    </tr>
+}
+
+</table>

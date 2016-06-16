@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Ecommerce.Entities.Category>
+
+@{
+    ViewBag.Title = "CategoryList";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Kategori Listesi</h2>
+
+<p>
+    @Html.ActionLink("Yeni Kategori Ekle", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+      Kategori Adı       
+         </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category_Name)
+        </td>
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new { id = item.Category_Id }) |
+            @Html.ActionLink("Detaylar", "Details", new { id = item.Category_Id }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.Category_Id })|
+            @Html.ActionLink("Alt Kategori Ekle", "../SubCategory/Create", new { id = item.Category_Id })
+
+
+
+
+
+
+        </td>
+    </tr>
+}
+
+</table>

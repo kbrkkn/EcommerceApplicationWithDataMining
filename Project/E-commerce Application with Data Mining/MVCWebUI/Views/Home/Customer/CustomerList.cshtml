@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Ecommerce.Entities.Customer>
+
+@{
+    ViewBag.Title = "Customer List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Customer List</h1>
+
+<p align="right">
+    @Html.ActionLink("Add New Customer", "CustomerAdd")
+</p>
+
+<style>
+    tr {
+        padding: 4px;
+    }
+
+    td {
+        padding: 6px;
+    }
+
+    tr:hover {
+        background-color: #ffd800;
+    }
+</style>
+
+
+
+<table border="1" width="100%">
+
+    <tr style="background-color: #f9f9f9;">      
+        <th>Adı</th>
+        <th>Soyadı</th>
+        <th>E-Posta</th>
+        <th>gender</th>
+        <th>birthdate</th>
+        <th>Password</th>
+        <th>Aktif</th>
+        <th>Silindi</th>
+        <th>İşlemler</th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Customer_Name</td>
+            <td>@item.Customer_Surname</td>
+            <td>@item.Customer_Email</td>
+            <td>@item.Customer_Password</td>
+            <td><input type="checkbox" checked=@item.IsActive /></td>
+            <td><input type="checkbox" checked=@item.IsDelete /></td>
+            <td>
+            <td>
+                <a href="@Url.Content("~/Customer/CustomerEdit/" + item.Customer_Id)">Düzenle</a> |
+                @Html.ActionLink("Sil", "CustomerDelete", new { id = item.Customer_Id },
+                new
+                {
+                    onclick = "return confirm('" + item.Customer_Name + " "
+                    + item.Customer_Surname + " isimli kişiyi silmek istediğinize emin misiniz?');"
+                })
+
+
+            </td>
+
+            </td>
+        </tr>
+    }
+
+
+</table>

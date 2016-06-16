@@ -1,0 +1,62 @@
+﻿@model List<Ecommerce.Entities.Product>
+
+@{
+    ViewBag.Title = "Product Listesi";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ProductList</h2>
+<p>
+    @Html.ActionLink("Create New", "../Product/ProductAdd")
+</p>
+<table class="table">
+    <tr>
+        <th>Description</th>
+        <th>Cost</th>
+        <th>Boutique</th>
+        <th>SubCategory</th>
+        <th>Warning</th>
+        <th>Image</th>
+        <th>Operations</th>
+        <th></th>
+    </tr>
+
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Product_Description</td>
+            <td>@item.Product_Cost</td>
+            <td>@item.ProductBoutiqueId.Boutique_Description</td>
+            <td>@item.SubCategory.SubCategory_Name</td>
+            <td>@item.Product_Warning</td>
+
+            <td>
+                @foreach (var i in item.Images)
+                {
+
+                    <div> <img src="data:image/jpeg;base64,@Convert.ToBase64String(@i.ImageData,0,@i.ImageData.Length) " /></div>
+
+
+                }
+
+            </td>
+
+            <td>
+                @Html.ActionLink("Product Sizes and Colors", "ProductSizeColor", new { id = item.Product_Id }) |
+                @Html.ActionLink("Update", "../Product/ProductEdit", new { id = item.Product_Id })  |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Product_Id })
+
+            </td>
+
+
+        </tr>
+    }
+
+</table>
+
+
+
+<div>
+    @Html.ActionLink("Back to Boutiques", "BoutiqueList")
+</div>

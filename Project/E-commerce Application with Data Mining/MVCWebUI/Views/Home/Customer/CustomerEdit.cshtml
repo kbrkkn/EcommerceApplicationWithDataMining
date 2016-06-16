@@ -1,0 +1,92 @@
+﻿@model Ecommerce.Entities.Customer
+@{
+    ViewBag.Title = "CustomerEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>UserEdit</h2>
+
+
+
+@using (Html.BeginForm("CustomerEdit", "Customer", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.Customer_Id)
+    @Html.HiddenFor(x => x.Customer_Name)
+    @Html.HiddenFor(x => x.Customer_Surname)
+    <table>
+
+        <tr>
+            <td>
+                Kullanıcı Tipi
+            </td>
+            <td>
+                @*@Html.DropDownListFor(x => x.TypeOfUser, ViewBag.TypeOfUser as SelectList)*@
+                @Html.DropDownList("TypeOfCustomer", ViewBag.TypeOfCustomer as List<SelectListItem>)
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                Adı
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Customer_Name, new { @placeHolder = "" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Soyadı
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Customer_Surname, new { @placeHolder = "" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                EPosta
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Customer_Email, new { @placeHolder = "" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Şifre
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Customer_Password, new { @placeHolder = "" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Aktif mi
+            </td>
+            <td>
+                @Html.CheckBoxFor(x => x.IsActive)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Silindi mi
+            </td>
+            <td>
+                @Html.CheckBoxFor(x => x.IsDelete)
+            </td>
+        </tr>
+
+
+    </table>
+
+    <button type="submit">Kaydet</button>
+
+
+}
+
+
+

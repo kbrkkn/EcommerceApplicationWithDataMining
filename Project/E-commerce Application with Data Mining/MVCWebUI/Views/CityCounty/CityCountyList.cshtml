@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Ecommerce.Entities.County>
+
+@{
+    ViewBag.Title = "CityCountyList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>County List</h2>
+
+<p align="right">
+    @Html.ActionLink("Add New County", "CityCountyAdd")
+</p>
+<table class="table">
+    <tr>
+        <th>City Name</th>
+        <th>County Name</th>
+        <th>Operations</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.City.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

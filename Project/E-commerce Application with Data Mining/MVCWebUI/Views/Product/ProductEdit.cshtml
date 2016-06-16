@@ -1,0 +1,84 @@
+﻿
+
+@model Ecommerce.Entities.Product
+@{
+    ViewBag.Title = "   ProductEdit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ProductEdit</h2>
+
+
+@using (Html.BeginForm("ProductEdit", "Product", FormMethod.Post))
+{
+    @Html.HiddenFor(x => x.Product_Id)
+
+    <table>
+
+        <tr>
+            <td>
+                color
+            </td>
+            <td>
+                @*@Html.DropDownListFor(x => x.TypeOfUser, ViewBag.TypeOfUser as SelectList)*@
+                @Html.DropDownList("Color", ViewBag.Color as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                subcategory
+            </td>
+            <td>
+                @*@Html.DropDownListFor(x => x.TypeOfUser, ViewBag.TypeOfUser as SelectList)*@
+                @Html.DropDownList("SubCategory", ViewBag.SubCategories as List<SelectListItem>)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                size
+            </td>
+            <td>
+                @*@Html.DropDownListFor(x => x.TypeOfUser, ViewBag.TypeOfUser as SelectList)*@
+                @Html.DropDownList("Size", ViewBag.Size as List<SelectListItem>)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Description
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Product_Description, new { @placeHolder = "" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Cost
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Product_Cost, new { @placeHolder = "" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                stock
+            </td>
+            <td>
+                @*@Html.TextBoxFor(x => x.Product_NumberInStock, new { @placeHolder = "" })*@
+            </td>
+        </tr>
+
+
+
+
+    </table>
+
+            <button type="submit">Kaydet</button>
+
+
+}
+
+
+

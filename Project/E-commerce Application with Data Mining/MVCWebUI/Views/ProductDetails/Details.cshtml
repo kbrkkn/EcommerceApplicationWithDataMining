@@ -1,0 +1,89 @@
+﻿@model Ecommerce.Entities.Product
+@{
+    ViewBag.Title = "Product - " + Model.Product_Description; }
+<h2>@Model.Product_Description</h2>
+
+<div id="product-details">
+    <p>
+        @foreach (var i in Model.Images)
+        {
+            <div> <img src="data:image/jpeg;base64,@Convert.ToBase64String(@i.ImageData,0,@i.ImageData.Length) "/></div>
+
+        }
+    </p>
+    <p>
+        <em>Boutique:</em> @Model.ProductBoutiqueId.Boutique_Description
+    </p>
+    <p>Category>SubCategory:
+    @Model.SubCategory.Category.Category_Name
+    @Model.SubCategory.SubCategory_Name</p>
+    <p>
+        <em>Product:</em> @Model.Product_Description
+    </p>
+    <p>
+        <em>Price:</em> @String.Format("{0:F}", Model.Product_Cost)
+    </p>
+
+    <p><em>Color:</em>@foreach (var item in Model.Colors)
+    {
+        @item.Color_Name}
+    </p>
+
+    <table>
+        <tr>
+            <td></td>
+            <td>Sizes</td>
+        </tr>
+        <tr>
+            <td></td>
+        </tr>
+    </table>
+</div>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <table>
+
+            <tr>
+                @{
+
+                    int cnt = 0;
+                    List<Ecommerce.Entities.ViewModel.SelectedSizes> sizes = ViewBag.Sizes;
+                    List<Ecommerce.Entities.ViewModel.AdvicedProduct> ad = ViewBag.advice;
+
+                    foreach (var a in ad)
+                    {
+                        <td>
+                            @a.Name
+                            <a href="@Url.Action("Details", "ProductDetails", new { id = @a.Product_Id })">
+         <img src="data:image/jpeg;base64,@Convert.ToBase64String(@a.ImageData,0,@a.ImageData.Length) " />
+                            </a>        
+
+                         </td>
+
+                    }
+                    foreach (var size in sizes)
+                    {
+                        if (cnt++ % 3 == 0)
+                        {
+                            @:</tr><tr>
+                                }
+
+                                @Html.ActionLink(size.Name + " ", "AddToCart",
+        "ShoppingCart", new { id = Model.Product_Id, selectedSize = size.Id }, "")
+                                @:<td>
+
+
+                                    @:</tr>
+
+
+
+
+                    }
+
+                }
+                </table>
+
+
+
+            </div>
+    </div>

@@ -1,0 +1,123 @@
+﻿@model Ecommerce.Entities.Customer
+@{
+    ViewBag.Title = "CustomerAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CustomerAdd</h2>
+
+@*@using Html.BeginForm yapısının HTML şekli*@
+@*<form enctype="multipart/form-data" method="post" action="UserAdd.cshtml">
+        <input type="submit" />
+    </form>*@
+
+@using (Html.BeginForm("CustomerAdd", "Customer", FormMethod.Post))
+{
+    <table>
+
+        <tr>
+            <td>
+                Üye Tipi
+            </td>
+            <td>
+                @Html.DropDownListFor(x => x.CustomerTypeOfCustomer, ViewBag.TypeOfCustomer as SelectList)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Adı
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Customer_Name, new { @class = "xClassName", @placeHolder = "" })
+            </td>
+        </tr>
+
+       
+
+        <tr>
+            <td>
+                Soyadı
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Customer_Surname, new { @placeHolder = "" })
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                EPosta
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Customer_Email, new { @placeHolder = "" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Password
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Customer_Password, new { @placeHolder = "" })
+
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Gender
+            </td>
+            <td>
+                @Html.RadioButtonFor(model => model.Customer_Gender, "M", false)@Html.Label("Male")
+                @Html.RadioButtonFor(model => model.Customer_Gender, "F", true)@Html.Label("Female")
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                BirthDate
+            </td>
+            <td>
+               @Html.EditorFor(model => model.Customer_BirthDate, new {  placeholder = "" })
+            @Html.ValidationMessageFor(model => model.Customer_BirthDate)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Contract
+            </td>
+            <td>
+                @Html.RadioButtonFor(model => model.Customer_Contract, true) Yes
+                @Html.RadioButtonFor(model => model.Customer_Contract, false) No
+
+            </td>
+        </tr>
+
+    
+        
+        <tr>
+            <td>
+                County
+            </td>
+            <td>
+                @Html.DropDownListFor(x => x.Customer_County_Id, ViewBag.CityCounty as SelectList)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Adress
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Customer_Address, new { @placeHolder = "" })
+            </td>
+        </tr>
+
+    </table>
+
+    <button type="submit">Ekle</button>
+
+}

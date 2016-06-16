@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Ecommerce.Entities.Size>
+@{
+    ViewBag.Title = "SizeList";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SizeList</h2>
+<p>
+    @Html.ActionLink("Add New Size", "SizeAdd")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Size Name
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size_Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Size_Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Size_Id })
+            </td>
+        </tr>
+    }
+
+</table>

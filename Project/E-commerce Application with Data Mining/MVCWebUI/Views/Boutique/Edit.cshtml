@@ -1,0 +1,55 @@
+﻿@model Ecommerce.Entities.Boutique
+@{
+    ViewBag.Title = "Update";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Boutique Edit</h2>
+
+@using (Html.BeginForm("Edit", "Boutique", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <table>
+
+        <tr>
+            <td>
+                Boutique Name
+
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Boutique_Description, new { @class = "xClassName", @placeHolder = "" })
+            </td>
+
+        </tr>
+
+
+        <tr>
+            <td>
+                File
+
+            </td>
+            <td>
+                <input type="file" name="File" id="File" />
+            </td>
+        </tr>
+
+
+    </table>
+
+    <button type="submit">Save</button>
+
+}
+
+<div>
+    @Html.ActionLink("Back to List", "BoutiqueList")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+
+
+

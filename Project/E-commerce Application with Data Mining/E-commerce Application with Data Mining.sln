@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.Entities", "Ecommerce.Entities\Ecommerce.Entities.csproj", "{4EF69F3C-42B9-47AE-A4B8-6B1A3B9B4E4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.DAL", "Ecommerce.DAL\Ecommerce.DAL.csproj", "{C28AC62C-F7EF-404A-8246-0DE99C07475D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ecommerce.BLL", "Ecommerce.BLL\Ecommerce.BLL.csproj", "{0B50B932-52DA-4530-8DD8-E4D045D6EE90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVCWebUI", "MVCWebUI\MVCWebUI.csproj", "{4E7C1F58-7047-4F9C-8752-E10BAB56562F}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 5
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://fulyacetin.visualstudio.com/defaultcollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Ecommerce.Entities\\Ecommerce.Entities.csproj
+		SccProjectName1 = Ecommerce.Entities
+		SccLocalPath1 = Ecommerce.Entities
+		SccProjectUniqueName2 = Ecommerce.DAL\\Ecommerce.DAL.csproj
+		SccProjectName2 = Ecommerce.DAL
+		SccLocalPath2 = Ecommerce.DAL
+		SccProjectUniqueName3 = Ecommerce.BLL\\Ecommerce.BLL.csproj
+		SccProjectName3 = Ecommerce.BLL
+		SccLocalPath3 = Ecommerce.BLL
+		SccProjectUniqueName4 = MVCWebUI\\MVCWebUI.csproj
+		SccProjectName4 = MVCWebUI
+		SccLocalPath4 = MVCWebUI
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4EF69F3C-42B9-47AE-A4B8-6B1A3B9B4E4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EF69F3C-42B9-47AE-A4B8-6B1A3B9B4E4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EF69F3C-42B9-47AE-A4B8-6B1A3B9B4E4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EF69F3C-42B9-47AE-A4B8-6B1A3B9B4E4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C28AC62C-F7EF-404A-8246-0DE99C07475D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C28AC62C-F7EF-404A-8246-0DE99C07475D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C28AC62C-F7EF-404A-8246-0DE99C07475D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C28AC62C-F7EF-404A-8246-0DE99C07475D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B50B932-52DA-4530-8DD8-E4D045D6EE90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B50B932-52DA-4530-8DD8-E4D045D6EE90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B50B932-52DA-4530-8DD8-E4D045D6EE90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B50B932-52DA-4530-8DD8-E4D045D6EE90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E7C1F58-7047-4F9C-8752-E10BAB56562F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E7C1F58-7047-4F9C-8752-E10BAB56562F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E7C1F58-7047-4F9C-8752-E10BAB56562F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E7C1F58-7047-4F9C-8752-E10BAB56562F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

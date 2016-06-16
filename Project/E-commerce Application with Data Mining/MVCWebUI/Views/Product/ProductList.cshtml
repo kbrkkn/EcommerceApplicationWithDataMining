@@ -1,0 +1,140 @@
+﻿@model Tuple<Ecommerce.Entities.ViewModel.ProductColorData, Ecommerce.Entities.ViewModel.ProductSizeData>
+@{
+    ViewBag.Title = "Product List";
+}
+
+<h2>Products</h2>
+
+<p>
+    @Html.ActionLink("Create New", "ProductAdd")
+</p>
+<table class="table">
+    <tr>
+        <th>Description</th>
+        <th>Cost</th>
+        <th>Boutique</th>
+        <th>SubCategory</th>
+        <th>Warning</th>
+        <th>Image</th>
+        <th>Operations</th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Item1.Products)
+    {
+        string selectedRow = "";
+        if (item.Product_Id == ViewBag.ProductID)
+        {
+            selectedRow = "success";
+        }
+        <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_Cost)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductBoutiqueId.Boutique_Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubCategory.SubCategory_Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product_Warning)
+            </td>
+
+
+
+            <td>
+                @foreach (var i in item.Images)
+                {
+
+                    <div> <img src="data:image/jpeg;base64,@Convert.ToBase64String(@i.ImageData,0,@i.ImageData.Length) " /></div>
+
+
+                }
+
+            </td>
+
+            <td>
+                @Html.ActionLink("Product Sizes and Colors", "ProductList", new { id = item.Product_Id }) |
+                @Html.ActionLink("Edit", "Edit", new { id = item.Product_Id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.Product_Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Product_Id })
+            </td>
+        </tr>
+    }
+
+</table>
+
+@if (Model.Item1.ProductColors != null)
+{
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Colors</th>
+        </tr>
+
+        @foreach (var item in Model.Item1.ProductColors)
+        {
+            string selectedRow = "";
+            if (item.Color_Id == ViewBag.ColorID)
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+                <td></td>
+
+                <td>
+                    @item.Color_Name
+                </td>
+
+            </tr>
+        }
+
+    </table>
+}
+
+
+
+@if (Model.Item2.ProductSizes != null)
+{
+    <table class="table">
+        <tr>
+            <th></th>
+            <th>Sizes</th>
+            <th>Stocks</th>
+
+        </tr>
+
+        @foreach (var item in Model.Item2.ProductStocks)
+        {
+            string selectedRow = "";
+            if (item.Size_Id == ViewBag.StokID)
+            {
+                selectedRow = "success";
+            }
+            <tr class="@selectedRow">
+               
+                <td></td>
+                <td>
+                    @item.Size.Size_Name
+                </td>
+                <td>
+                    @item.NumberOfStock
+
+                </td>
+
+            </tr>
+        }
+
+
+    </table>
+}
+
+
+
+

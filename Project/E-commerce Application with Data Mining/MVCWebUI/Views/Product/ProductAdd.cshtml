@@ -1,0 +1,178 @@
+﻿@model Ecommerce.Entities.Product
+@{
+    ViewBag.Title = "ProductAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Product</h2>
+
+@*@using Html.BeginForm yapısının HTML şekli*@
+@*<form enctype="multipart/form-data" method="post" action="UserAdd.cshtml">
+        <input type="submit" />
+    </form>*@
+
+@using (Html.BeginForm("ProductAdd", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table>
+
+        <tr>
+            <td>
+                Product Description
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Product_Description, new { @class = "xClassName", @placeHolder = "" })
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                Cost
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Product_Cost, new { @class = "xClassName", @placeHolder = "" })
+
+
+            </td>
+        </tr>
+
+
+
+       
+
+        <tr>
+            <td>
+                Warning
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Product_Warning, new { @placeHolder = "" })
+
+            </td>
+        </tr>
+
+
+      
+        <tr>
+            <td>
+                SubCategory
+            </td>
+            <td>
+                @Html.DropDownListFor(x => x.Product_SubCategory_Id, ViewBag.SubCategory as SelectList)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Boutique
+            </td>
+            <td>
+                @Html.DropDownListFor(x => x.Product_Boutique_Id, ViewBag.Boutique as SelectList)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                File
+            </td>
+            <td>
+                <input type="file" name="File" id="File" />
+            </td>
+        </tr>
+    </table>
+   
+    <table>
+        <tr>
+            <td></td>
+            <td>Colors</td>
+        </tr>
+    </table> 
+    
+    
+    
+        <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <table>
+                <tr>
+                    @{
+            int cont = 0;
+            List<Ecommerce.Entities.ViewModel.SelectedColor> colors = ViewBag.Colors;
+
+            foreach (var color in colors)
+            {
+                if (cont++ % 3 == 0)
+                {
+                    @:</tr><tr>
+                                }
+                                @:<td>
+                                    <input type="checkbox"
+                                           name="selectedColors"
+                                           value="@color.Id"
+                                           @(Html.Raw(color.IsSelected ? "checked=\"checked\"" : "")) />
+                                    @color.Name
+                                    @:</td>
+                            }
+                            @:</tr>
+                    }
+                </table>
+            </div>
+        </div>
+
+    <table>
+       
+        <tr>
+            <td></td>
+            <td>Sizes Stocks</td>
+        </tr>
+    </table>
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <table>
+                <tr>
+                    @{
+            int cnt = 0;
+            List<Ecommerce.Entities.ViewModel.SelectedSizes> sizes = ViewBag.Sizes;
+          
+            foreach (var size in sizes)
+            {
+                if (cnt++ % 3 == 0)
+                {
+                    @:</tr><tr>
+                                }
+                                @:<td>
+                                    <input type="checkbox"
+                                           name="selectedSizes"
+                                           value="@size.Id"
+                                           @(Html.Raw(size.IsSelected ? "checked=\"checked\"" : ""))
+                                           onclick="fun(this,'@size.Id')" />
+                                           @size.Name
+
+    <input type="text" id="@size.Id"  name="numbers" disabled="disabled" />
+
+                                    @:</td>
+
+
+            }
+                            @:</tr>
+                    }
+                </table>
+            </div>
+        </div>
+    <button type="submit">Add</button>
+
+}
+<script type="text/javascript">
+    function fun(selectedSizes,numbers) {  
+        var numberss = document.getElementById(numbers);
+        if(selectedSizes.checked){
+            numberss.disabled=false;
+            numberss.value="";
+        }
+        else{numberss.disabled=true;
+            numberss.value="";}
+    }
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

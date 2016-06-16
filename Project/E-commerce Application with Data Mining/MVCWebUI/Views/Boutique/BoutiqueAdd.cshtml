@@ -1,0 +1,48 @@
+﻿@model Ecommerce.Entities.Boutique
+
+@{
+    ViewBag.Title = "BoutiqueAdd";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Add Boutique</h2>
+
+@*@using Html.BeginForm yapısının HTML şekli*@
+@*<form enctype="multipart/form-data" method="post" action="UserAdd.cshtml">
+        <input type="submit" />
+    </form>*@
+
+@using (Html.BeginForm("BoutiqueAdd", "Boutique", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <table>
+       
+        <tr>
+            <td>
+                Boutique Description
+            </td>
+            <td>
+                @Html.TextBoxFor(x => x.Boutique_Description, new { @class = "xClassName", @placeHolder = "" })
+            </td>
+          
+        </tr>
+
+        
+        <tr>
+            <td>
+                File
+
+            </td>
+            <td>
+                <input type="file" name="File" id="File" />
+            </td>
+        </tr>
+
+
+
+
+    </table>
+
+    <button type="submit">Add</button>
+
+}

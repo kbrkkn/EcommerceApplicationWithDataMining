@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Ecommerce.Entities.TypeOfCustomer>
+@{
+    ViewBag.Title = "TypeOfCustomerList";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>TypeOfCustomer List</h2>
+
+<p align="right">
+    @Html.ActionLink("Add New Type Of Customer", "Add")
+</p>
+
+<table class="table">
+    <tr>
+        <th>Type Of Customer</th>
+        <th>Operations</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeOfCustomer_Description)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.TypeOfCustomer_Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.TypeOfCustomer_Id })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,35 @@
+﻿@model List<Ecommerce.Entities.Product>
+
+@{
+    ViewBag.Title = "Product List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table">
+    <tr>
+        @{
+            int a=0;
+        foreach (var item in Model)
+        {
+            if (a++ % 3 == 0) 
+            { 
+            @:</tr><tr>
+            }
+            <td>
+
+                @foreach (var i in item.Images)
+                {
+   <div> <a href="@Url.Action("Details", "ProductDetails", new { id = item.Product_Id })">
+    <img src="data:image/jpeg;base64,@Convert.ToBase64String(@i.ImageData,0,@i.ImageData.Length) " /></a>
+</div>
+
+                }
+                @item.Product_Description
+                @item.Product_Cost
+            </td>
+        }}
+    </tr>
+
+</table>
+

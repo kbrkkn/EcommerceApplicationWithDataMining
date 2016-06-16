@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+@using (Html.BeginForm("Login", "Dashboard", FormMethod.Post))
+{
+    <table>
+        <tr>
+            <td><label for="txtEPosta">E-Posta Adresi</label></td>
+            <td><input type="text" id="txtEPosta" name="txtEPosta"</td>
+        </tr>
+
+        <tr>
+            <td><label for="txtPassword">Şifre</label></td>
+            <td><input type="password" id="txtPassword" name="txtPassword"</td>
+        </tr>
+
+        <tr>
+            <td colspan="2">
+                <button type="submit">Giriş</button>
+            </td>
+        </tr>
+
+    </table>
+}

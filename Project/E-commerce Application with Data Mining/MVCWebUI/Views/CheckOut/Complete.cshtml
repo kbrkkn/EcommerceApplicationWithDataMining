@@ -1,0 +1,70 @@
+﻿@model Ecommerce.Entities.OrderDetail
+
+@{
+    ViewBag.Title = "Checkout Complete";
+}
+
+<h2>Checkout Complete</h2>
+
+<p>Thanks for your order</p>
+
+
+@using (Html.BeginForm(new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    <table>
+
+        <tr>
+      
+        </tr>
+    </table>
+}
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <table>
+
+            <tr>
+                @{
+
+                    int cnt = 0;
+                    List<Ecommerce.Entities.ViewModel.AdvicedProduct> ad = ViewBag.advice;
+
+                    foreach (var a in ad)
+                    {
+                        <td>
+                            @a.Name
+                            <a href="@Url.Action("Details", "ProductDetails", new { id = @a.Product_Id })">
+                                <img src="data:image/jpeg;base64,@Convert.ToBase64String(@a.ImageData,0,@a.ImageData.Length) " />
+                            </a>
+
+                        </td>
+
+                    }
+            
+
+                }
+            </table>
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<p>
+    Go on shopping
+    @Html.ActionLink("Boutiques", "Index", "Home")
+</p>
